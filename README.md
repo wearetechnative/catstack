@@ -5,6 +5,122 @@ understandable and scalable.
 
 <img src="catstacklogo.png" style="width:200px" />
 
+## What is CatStack?
+
+CatStack is a Terraform/OpenTofu framework that originated within TechNative. The
+framework solves several crucial problems that Cloud Engineers face when
+performing migrations and helps them set up completely new projects much faster.
+CatStack draws inspiration from frameworks in the software development world
+without trying to resemble them.
+
+The main principles of CatStack are:
+
+- "Don't repeat yourself" (DRY)
+- Domain-separated organization of infrastructure
+
+CatStack is designed to be used without having to install additional software
+except for Terraform/OpenTofu itself.
+
+## Is CatStack magic?
+
+No, we're not making it prettier than it is. CatStack is simply a well-considered
+collection of conventions, best practices, and a directory structure that
+bundles multiple Terraform projects together. All of this combined delivers a
+comprehensible and scalable IaC project that increases productivity for any cloud team,
+whether small or large.
+
+## The advantages of CatStack
+
+These are the advantages of building a terraform project with CatStack.
+
+### Collaboration in a team environment
+
+By dividing infrastructure into logical domains, multiple engineers can
+collaborate on a larger project. CatStack has best practices, but in principle,
+a team is free to determine its own domains. A domain has its own
+terraform state, so as long as engineers don't work on a domain simultaneously,
+they can use `terraform apply` whenever they want.
+
+### DRY and multi-environments
+
+CatStack helps engineers write efficient source code that is reusable.
+First, CatStack implements multi-environments in a clear and
+scalable way. An environment can be deployed in multiple ways but
+the most obvious application is to separate production and non-production
+cloud accounts from each other. Heavier resources can be configured
+for the production account. The source code that defines the resources
+is shared across all environments.
+
+### DRY and data blocks
+
+Through Terraform's data blocks, resources from one domain can read necessary
+information from the state of another domain.
+
+### DRY and shared code libraries
+
+CatStack offers the possibility to place project-specific terraform code that
+appears in multiple domains in a shared library.
+
+### DRY and Domain modules
+
+This is a programming pattern that CatStack encourages, but that every good
+Terraform programmer naturally knows and applies. As soon as you define
+multiple nearly identical resources within a domain, you create a module. You do this
+within the domain. You can compare this to creating a function in a
+generic programming language.
+
+### DRY and Terraform remote modules
+
+Within a domain, you can of course make use of Terraform's powerful
+module system. Use any of the thousands of modules from the
+Terraform Registry, or reference previously written modules in a git repo.
+Don't limit yourself because Terraform modules are the building blocks of the
+Cloud.
+
+### Flexible
+
+CatStack is incredibly flexible. Any application can be captured within the
+CatStack framework. And this while maintaining the ability to make as much use
+as possible of existing building blocks. This combination of qualities
+makes CatStack ideal for teams that execute many projects. Each project
+is tailor-made, and at the same time, each project contributes to the projects that
+are yet to come.
+
+### Cloud Agnostic
+
+Just like Terraform is suitable for AWS, Azure, or any other provider...
+CatStack is just as versatile. It's even possible within a CatStack
+project to have multiple providers working together. As a fun experiment,
+we built a several projects in MineCraft with CatStack and the Terraform MineCraft
+provider.
+
+### Optional tooling
+
+As stated earlier, CatStack is a framework that can be used with
+Terraform as its only dependency. However, because CatStack is
+based on smart conventions, it offers excellent opportunities to make tasks
+even easier. TechNative has created quite a few scripts and small programs for AWS
+that make our engineers even more productive.
+
+At TechNative, we work with the rule: feel free to use all those handy scripts
+that allow you to work faster. But not before you understand how Terraform
+works and how CatStack is structured.
+
+Here's a list of CatStack tooling we use withing TechNative:
+
+- [RACE](https://github.com/wearetechnative/race) - Terraform Tools for TechNative CatStack 
+- [Bootstrap-AWS-CatStack](https://github.com/wearetechnative/bootstrap-aws-catstack) - Bootstrap-AWS-CatStack Script
+
+## FAQ
+
+> What does the name CatStack mean?
+
+CatStack doesn't mean that much. A cat is a nice animal. You can read it as:
+Cloud AWS Terraform Stack.
+
+> Does CatStack also work with OpenTofu instead of Terraform?
+
+CatStack is 100% compatible with OpenTofu.
 
 ## Definition of Terms
 
@@ -40,8 +156,4 @@ modules.
 
 A CatStack domain is not distributed as an installable module, but its
 more like glue code for one or more resources to define an infrastruture
-component in a larger system or solution. 
-
-### Example Domains
-
-- ...
+component in a larger system or solution.
