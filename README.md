@@ -145,6 +145,12 @@ Stack as a kitchen drawer and the contents in that drawer are known as domains.
 Module: A module is a group of resources that together provide a certain value
 for a domain or stack.
 
+## Documentation
+
+For more detailed documentation, see the [docs](./docs/) directory:
+
+- [Architecture](./docs/architecture.md) - Detailed CatStack architecture and structure
+
 ## Domains
 
 A CatStack is a composition of _domains_. A domain is an autonomous Terraform
